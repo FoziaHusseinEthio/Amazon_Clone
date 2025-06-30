@@ -62,9 +62,7 @@
   min-height: 2.5em; /* Approx 2 lines height to prevent jumpiness */
 }
 
-.ratingAndPriceContainer {
-  /* No specific styles needed here for card view, useful for flex */
-}
+
 
 .ratingContainer {
   display: flex;
@@ -137,9 +135,7 @@
   box-shadow: none; /* No extra shadow on hover for detail page */
 }
 
-.productFlexed .imageLinkWrapper {
-  /* The link still works, styling for the container of the image */
-}
+
 
 .productFlexed .imageContainer {
   flex: 0 0 40%; /* Image takes up about 40% of the width */
@@ -290,16 +286,6 @@
 
 .productSection {
   display: grid;
-  /*
-    Responsive grid:
-    - auto-fill: Creates as many columns as can fit.
-    - minmax(280px, 1fr): Each column will be at least 280px wide,
-      and will expand equally to fill available space (1fr).
-      Adjust 280px based on your ProductCard's typical width + desired margins.
-      Given the ProductCard has max-width: 320px and margin: 10px,
-      a value around 300px-340px might be good for minmax.
-      Let's go with a value that allows for card width + some gap.
-  */
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px; /* Space between cards */
   padding: 20px; /* Padding around the entire product grid */
@@ -323,17 +309,3 @@
   border-radius: 4px;
   margin: 20px;
 }
-
-/*
-  If your ProductCard.js is importing from ./product.module.css
-  and your Product.js is also importing from ./Product.module.css (same file),
-  then the styles for .card, .productFlexed, etc., would already be in this file.
-
-  If they are separate CSS Modules (e.g., ProductCard/product.module.css and Product/Product.module.css),
-  then this file (`Product/Product.module.css`) would only need the .productSection, .loading, .error styles.
-*/
-
-/*
-  Assuming ProductCard's own styles are handled by its import:
-  import styles from "./product.module.css"; (within ProductCard.js)
-*/
