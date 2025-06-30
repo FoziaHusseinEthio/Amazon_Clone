@@ -1,0 +1,339 @@
+/* product.module.css */
+
+/* --- General Card Styles (for grid view, etc.) --- */
+.card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px; /* Softer radius */
+  padding: 16px;
+  margin: 10px;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  font-family: "Amazon Ember", Arial, sans-serif;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.imageLinkWrapper { /* For the <Link> tag */
+  text-decoration: none;
+  color: inherit;
+  display: block; /* Ensures the link takes up its child's space */
+}
+
+.imageContainer {
+  width: 100%;
+  height: 220px; /* Fixed height for grid consistency */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  overflow: hidden; /* To respect image border-radius if any */
+}
+
+.productImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Allows button/price to be pushed down */
+  text-align: left; /* Default text align */
+}
+
+.title {
+  font-size: 15px; /* Amazon-like title size for cards */
+  font-weight: 400;
+  color: #0F1111;
+  line-height: 1.3;
+  margin-bottom: 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Max 3 lines for title in card */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 2.5em; /* Approx 2 lines height to prevent jumpiness */
+}
+
+.ratingAndPriceContainer {
+  /* No specific styles needed here for card view, useful for flex */
+}
+
+.ratingContainer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.ratingCount {
+  font-size: 13px;
+  color: #007185; /* Amazon link blue */
+  text-decoration: none;
+}
+.ratingCount:hover {
+  color: #C7511F;
+  text-decoration: underline;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: 700; /* Bolder price for cards */
+  color: #0F1111;
+  margin-bottom: 12px;
+}
+
+.descriptionDetail { /* Hidden in card view by default */
+  display: none;
+}
+
+.addToCartContainer {
+  margin-top: auto; /* Pushes button to bottom of card */
+}
+
+.addToCart {
+  background-color: #FFD814;
+  border: 1px solid;
+  border-color: #FCD200 #F8C100 #F0B700;
+  border-radius: 20px; /* Pill shape for card */
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 400;
+  color: #0F1111;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 1px 0 rgba(255,255,255,.4) inset;
+  transition: background-color 0.1s ease;
+}
+
+.addToCart:hover {
+  background-color: #F7CA00;
+}
+
+
+/* --- Styles for Amazon Product Detail Page (.productFlexed) --- */
+.productFlexed {
+  flex-direction: row;
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 24px;
+  gap: 32px;
+  align-items: flex-start;
+  background-color: #fff; /* Ensure white background */
+  border: 1px solid #DDD; /* Light border for the whole container */
+  border-radius: 4px;
+  box-shadow: none; /* Reset card hover shadow */
+}
+
+.productFlexed:hover {
+  box-shadow: none; /* No extra shadow on hover for detail page */
+}
+
+.productFlexed .imageLinkWrapper {
+  /* The link still works, styling for the container of the image */
+}
+
+.productFlexed .imageContainer {
+  flex: 0 0 40%; /* Image takes up about 40% of the width */
+  max-width: 350px; /* Max width for the image area */
+  height: auto; /* Auto height based on content */
+  min-height: 300px; /* Minimum height for image area */
+  max-height: 500px; /* Max height for image area */
+  padding: 20px; /* Padding around the image */
+  border: 1px solid #e7e7e7;
+  border-radius: 4px;
+  margin-bottom: 0; /* Reset margin */
+  /* align-items: flex-start; /* Align image to top if it's smaller */
+}
+
+.productFlexed .productImage {
+  max-width: 100%;
+  max-height: 100%; /* Image fits within the container's max-height */
+  object-fit: contain;
+}
+
+.productFlexed .content {
+  flex: 1; /* Info column takes remaining space */
+  text-align: left;
+  gap: 0; /* Remove default gap, manage spacing per element */
+}
+
+.productFlexed .title {
+  font-size: 24px; /* Larger title */
+  font-weight: 400; /* Amazon product title weight */
+  line-height: 1.3;
+  color: #0F1111;
+  margin-bottom: 8px;
+  -webkit-line-clamp: unset; /* Show full title */
+  min-height: auto; /* Reset min-height */
+}
+
+.productFlexed .ratingAndPriceContainer {
+  /* For detail page, we might want rating and price on separate lines */
+  /* Or side-by-side if screen is very wide. Here, default block flow is fine. */
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #e7e7e7; /* Separator line */
+}
+
+.productFlexed .ratingContainer {
+  margin-bottom: 12px; /* Space below rating */
+}
+
+.productFlexed .price {
+  font-size: 28px;
+  color: #B12704; /* Amazon price red */
+  font-weight: 400;
+  margin-bottom: 0; /* No margin if it's the last in its container */
+  line-height: 1.2;
+}
+
+/* Style for the description wrapper */
+.productFlexed .descriptionDetail {
+  display: block; /* Make it visible */
+  margin-top: 0; /* Reset margin as it follows rating/price block */
+  margin-bottom: 20px;
+}
+
+.productFlexed .descriptionDetail h4 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0F1111;
+  margin-bottom: 8px;
+}
+
+.productFlexed .descriptionDetail p,
+.productFlexed .descriptionDetail ul {
+  font-size: 14px;
+  color: #333333;
+  line-height: 1.6;
+  margin: 0 0 10px 0;
+}
+.productFlexed .descriptionDetail ul {
+  padding-left: 20px; /* Indent bullet points */
+  margin-bottom: 0;
+}
+.productFlexed .descriptionDetail li {
+  margin-bottom: 5px;
+}
+
+
+.productFlexed .addToCartContainer {
+  margin-top: 20px; /* Space above button */
+  padding: 20px;
+ 
+}
+
+.productFlexed .addToCart {
+  background-color: #FFD814;
+  border-color: #FCD200;
+  color: #0F1111;
+  padding: 10px 12px;
+  border: 1px solid;
+  border-color: #a88734 #9c7e31 #846a29;
+  border-radius: 8px; /* More squared */
+  font-size: 14px;
+  font-weight: 500;
+  width: 50%; /* Full width within its container */
+  box-shadow: 0 1px 0 rgba(255,255,255,.4) inset;
+}
+
+.productFlexed .addToCart:hover {
+  background-color: #F7CA00;
+}
+
+/* Responsive adjustments for smaller screens if needed */
+@media (max-width: 768px) {
+  .productFlexed {
+    flex-direction: column; /* Stack image and content on smaller screens */
+    gap: 20px;
+    padding: 16px;
+  }
+
+  .productFlexed .imageContainer {
+    flex: 0 0 auto; /* Reset flex basis */
+    width: 100%; /* Full width image container */
+    max-width: 100%;
+    max-height: 350px; /* Adjust max height for stacked view */
+    padding: 10px;
+  }
+
+  .productFlexed .content {
+    width: 100%;
+  }
+
+  .productFlexed .title {
+    font-size: 20px;
+  }
+
+  .productFlexed .price {
+    font-size: 24px;
+  }
+
+  .productFlexed .addToCartContainer {
+    padding: 15px;
+  }
+}
+
+
+
+
+/* Styles for Product.js - the container for multiple product cards */
+
+.productSection {
+  display: grid;
+  /*
+    Responsive grid:
+    - auto-fill: Creates as many columns as can fit.
+    - minmax(280px, 1fr): Each column will be at least 280px wide,
+      and will expand equally to fill available space (1fr).
+      Adjust 280px based on your ProductCard's typical width + desired margins.
+      Given the ProductCard has max-width: 320px and margin: 10px,
+      a value around 300px-340px might be good for minmax.
+      Let's go with a value that allows for card width + some gap.
+  */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px; /* Space between cards */
+  padding: 20px; /* Padding around the entire product grid */
+  max-width: 1400px; /* Optional: Max width for the grid container */
+  margin: 0 auto; /* Center the grid container if max-width is set */
+  font-family: "Amazon Ember", Arial, sans-serif; /* Consistent font */
+}
+
+.loading,
+.error {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 40px;
+  color: #555;
+}
+
+.error {
+  color: #D8000C; /* Error red */
+  background-color: #FFD2D2; /* Light red background */
+  border: 1px solid #D8000C;
+  border-radius: 4px;
+  margin: 20px;
+}
+
+/*
+  If your ProductCard.js is importing from ./product.module.css
+  and your Product.js is also importing from ./Product.module.css (same file),
+  then the styles for .card, .productFlexed, etc., would already be in this file.
+
+  If they are separate CSS Modules (e.g., ProductCard/product.module.css and Product/Product.module.css),
+  then this file (`Product/Product.module.css`) would only need the .productSection, .loading, .error styles.
+*/
+
+/*
+  Assuming ProductCard's own styles are handled by its import:
+  import styles from "./product.module.css"; (within ProductCard.js)
+*/
